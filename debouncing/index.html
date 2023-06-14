@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debouncing</title>
+  </head>
+  <body>
+    <!-- Debounce -->
+    <input type="text" placeholder="Search" oninput="handleChange(event)" />
+  </body>
+  <script>
+    let timer;
+    function handleChange(e) {
+      let search = e.target.value;
+      clearTimeout(timer); // clear previous timeout
+      timer = setTimeout(() => {
+        fe(search);
+      }, 2000);
+    }
+
+    async function fe(search) {
+      const a = await fetch(
+        `https://jsonplaceholder.typicode.com/users?username=${search}`
+      ).then((res) => res.json());
+      console.log(a);
+    }
+  </script>
+</html>
+`
